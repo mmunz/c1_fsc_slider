@@ -29,5 +29,10 @@ $EM_CONF[$_EXTKEY] = [
         ],
         'conflicts' => [],
         'suggests'  => []
+    ],
+    'autoload' => [
+        'psr-4' => [
+            'DanielGoerz\\FluidStyledSlider\\' => 'Classes',
+        ]
     ]
 ];
