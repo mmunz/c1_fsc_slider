@@ -1,5 +1,5 @@
 {
-  "name": "c1/c1-fluid-styled-slider",
+  "name": "c1/c1-fsc-slider",
   "type": "typo3-cms-extension",
   "description": "A slider Content Element for TYPO3 CMS based on fluid_styled_content.",
   "keywords": [
