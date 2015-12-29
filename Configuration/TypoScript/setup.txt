@@ -1,6 +1,6 @@
 lib.fluidContent {
 	templateRootPaths {
-		fsc_slider = EXT:c1_fsc_slider/Resources/Private/Templates
+		C1FscSlider = {$plugin.tx_c1fscslider.view.templateRootPath}
 	}
 }
 tt_content {
