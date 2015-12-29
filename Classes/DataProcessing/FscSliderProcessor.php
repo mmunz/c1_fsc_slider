@@ -59,7 +59,8 @@ class FscSliderProcessor implements DataProcessorInterface
         }
 
         // This will be available in fluid with {slider.options}
-        $processedData['slider']['options'] = json_encode($this->getOptionsFromFlexFormData($processedData['data']));
+        $processedData['slider']['options'] = $this->getOptionsFromFlexFormData($processedData['data']);
+        $processedData['slider']['options_json'] = json_encode($this->getOptionsFromFlexFormData($processedData['data']));
         // This will be available in fluid with {slider.width}
         $processedData['slider']['width'] = $sliderWidth + 80;
         return $processedData;
