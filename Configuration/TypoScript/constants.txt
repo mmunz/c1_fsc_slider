@@ -1,4 +1,4 @@
 plugin.tx_c1fscslider.settings {
 	# cat=plugin.tx_c1fscslider/include; type=check; label=Include jQuery in JSFooterLibs
-	includejQuery = 1
+	includejQuery = 0
 }
