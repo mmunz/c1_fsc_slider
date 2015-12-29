@@ -1,4 +1,4 @@
-plugin.tx_fluidstyledslider.settings {
-	# cat=plugin.tx_fluidstyledslider/include; type=check; label=Include jQuery in JSFooterLibs
+plugin.tx_c1fscslider.settings {
+	# cat=plugin.tx_c1fscslider/include; type=check; label=Include jQuery in JSFooterLibs
 	includejQuery = 1
 }

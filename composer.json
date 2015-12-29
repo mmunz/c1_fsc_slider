@@ -1,5 +1,5 @@
 {
-  "name": "danielgoerz/fluid-styled-slider",
+  "name": "c1/c1-fluid-styled-slider",
   "type": "typo3-cms-extension",
   "description": "A slider Content Element for TYPO3 CMS based on fluid_styled_content.",
   "keywords": [
@@ -9,8 +9,8 @@
   ],
   "authors": [
     {
-      "name": "Daniel Goerz",
-      "email": "ervaude@gmail.com",
+      "name": "Manuel Munz",
+      "email": "t3dev@comuno.net",
       "role": "Developer"
     }
   ],
@@ -20,7 +20,7 @@
   },
   "autoload": {
     "psr-4": {
-      "DanielGoerz\\FluidStyledSlider\\": "Classes/"
+      "C1\\C1FscSlider\\": "Classes/"
     }
   }
 }

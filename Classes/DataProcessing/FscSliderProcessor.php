@@ -1,6 +1,6 @@
 <?php
 
-namespace DanielGoerz\FluidStyledSlider\DataProcessing;
+namespace C1\C1FscSlider\DataProcessing;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -25,11 +25,11 @@ use TYPO3\CMS\Frontend\ContentObject\Exception\ContentRenderingException;
  * This data processor will calculate rows, columns and dimensions for a gallery
  * based on several settings and can be used for f.i. the CType "hf_images"
  */
-class FluidStyledSliderProcessor implements DataProcessorInterface
+class FscSliderProcessor implements DataProcessorInterface
 {
 
     /**
-     * Process data for the CType "fs_slider"
+     * Process data for the CType "fsc_slider"
      *
      * @param ContentObjectRenderer $cObj The content object renderer, which contains data of the content element
      * @param array $contentObjectConfiguration The configuration of Content Object

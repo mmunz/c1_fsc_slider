@@ -1,6 +1,6 @@
 <?php
 
-namespace DanielGoerz\FluidStyledSlider\Hooks;
+namespace C1\C1FscSlider\Hooks;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -19,13 +19,14 @@ use TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHookInterface;
 use TYPO3\CMS\Backend\View\PageLayoutView;
 
 /**
- * Contains a preview rendering for the page module of CType="fs_slider"
+ * Contains a preview rendering for the page module of CType="c1_fsc_slider"
  */
-class FsSliderPreviewRenderer implements PageLayoutViewDrawItemHookInterface
+
+class FscSliderPreviewRenderer implements PageLayoutViewDrawItemHookInterface
 {
 
     /**
-     * Preprocesses the preview rendering of a content element of type "fs_slider"
+     * Preprocesses the preview rendering of a content element of type "fsc_slider"
      *
      * @param \TYPO3\CMS\Backend\View\PageLayoutView $parentObject Calling parent object
      * @param bool $drawItem Whether to draw the item using the default functionality
@@ -41,7 +42,7 @@ class FsSliderPreviewRenderer implements PageLayoutViewDrawItemHookInterface
         &$itemContent,
         array &$row
     ) {
-        if ($row['CType'] === 'fs_slider') {
+        if ($row['CType'] === 'fsc_slider') {
             $itemContent .= '<h3>Fluid Styled Slider</h3>';
             if ($row['assets']) {
                 $itemContent .= $parentObject->thumbCode($row, 'tt_content', 'assets') . '<br />';

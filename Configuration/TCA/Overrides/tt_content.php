@@ -4,26 +4,26 @@ defined('TYPO3_MODE') or die();
 call_user_func(function () {
 
     $languageFilePrefix = 'LLL:EXT:fluid_styled_content/Resources/Private/Language/Database.xlf:';
-    $customLanguageFilePrefix = 'LLL:EXT:fluid_styled_slider/Resources/Private/Language/locallang_be.xlf:';
+    $customLanguageFilePrefix = 'LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:';
     $frontendLanguageFilePrefix = 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:';
 
-    // Add the CType "fs_slider"
+    // Add the CType "fsc_slider"
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
         'tt_content',
         'CType',
         [
-            'LLL:EXT:fluid_styled_slider/Resources/Private/Language/locallang_be.xlf:wizard.title',
-            'fs_slider',
+            'LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:wizard.title',
+            'fsc_slider',
             'content-image'
         ],
         'textmedia',
         'after'
     );
 
-    $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['fs_slider'] = $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['textmedia'];
+    $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['fsc_slider'] = $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['textmedia'];
 
     // Define what fields to display
-    $GLOBALS['TCA']['tt_content']['types']['fs_slider'] = [
+    $GLOBALS['TCA']['tt_content']['types']['fsc_slider'] = [
         'showitem'         => '
                 --palette--;' . $frontendLanguageFilePrefix . 'palette.general;general,
                 --palette--;' . $languageFilePrefix . 'tt_content.palette.mediaAdjustments;mediaAdjustments,

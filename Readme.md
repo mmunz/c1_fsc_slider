@@ -1,6 +1,6 @@
 # About this extension
 
-fluid_styled_slider is an example extension that provides everything to create a custom content element
+c1_fsc_slider is an example extension that provides everything to create a custom content element
 for TYPO3 CMS 7 based on the system extension fluid_styled_content (FSC).
 
 A more detailed explanaition of the following can be found at: https://usetypo3.com/custom-fsc-element.html
@@ -12,23 +12,23 @@ Obviously FSC needs to be installed in TYPO3 which is only possible in version 7
 Install the extension and include the static TypoScript. Simple as that.
 
 ## Components of a content element based on FSC
-This extension adds a content element called `fs_slider` to the system. The following steps are necessary to get it up and running:
+This extension adds a content element called `fsc_slider` to the system. The following steps are necessary to get it up and running:
 
 ### PageTSconfig
 To make our content element appear in the wizard for new content elements, we have to add it via PageTSconfig
 
     mod.wizards.newContentElement.wizardItems.common {
     	elements {
-    		fs_slider {
+    		fsc_slider {
     			iconIdentifier = content-image
-    			title = LLL:EXT:fluid_styled_slider/Resources/Private/Language/locallang_be.xlf:wizard.title
-    			description = LLL:EXT:fluid_styled_slider/Resources/Private/Language/locallang_be.xlf:wizard.description
+    			title = LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:wizard.title
+    			description = LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:wizard.description
     			tt_content_defValues {
-    				CType = fs_slider
+    				CType = fsc_slider
     			}
     		}
     	}
-    	show := addToList(fs_slider)
+    	show := addToList(fsc_slider)
     }
 
 ### TCA
@@ -39,8 +39,8 @@ This stuff is now done in the folder `Configuration/TCA/Override`. Let's add our
         'tt_content',
         'CType',
         [
-            'LLL:EXT:fluid_styled_slider/Resources/Private/Language/locallang_be.xlf:wizard.title',
-            'fs_slider',
+            'LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:wizard.title',
+            'fsc_slider',
             'content-image'
         ],
         'textmedia',
@@ -49,7 +49,7 @@ This stuff is now done in the folder `Configuration/TCA/Override`. Let's add our
     
 Now we determine what fields to show for our CType:
 
-    $GLOBALS['TCA']['tt_content']['types']['fs_slider'] = [
+    $GLOBALS['TCA']['tt_content']['types']['fsc_slider'] = [
         'showitem'         => '
                 --palette--;' . $frontendLanguageFilePrefix . 'palette.general;general,
                 --palette--;' . $languageFilePrefix . 'tt_content.palette.mediaAdjustments;mediaAdjustments,
@@ -60,11 +60,11 @@ Now we determine what fields to show for our CType:
     ];
 
 ### TypoScript
-The new CType `fs_slider` needs a rendering definition. This is rather simple:
+The new CType `fsc_slider` needs a rendering definition. This is rather simple:
 
     tt_content {
-    	fs_slider < lib.fluidContent
-    	fs_slider {
+    	fsc_slider < lib.fluidContent
+    	fsc_slider {
     		templateName = FluidStyledSlider
     		dataProcessing {
     			10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
@@ -89,7 +89,7 @@ for instance resolves all attached media elements for us, so we can access the F
     class FluidStyledSliderProcessor implements DataProcessorInterface
     {
         /**
-         * Process data for the CType "fs_slider"
+         * Process data for the CType "fsc_slider"
          *
          * @param ContentObjectRenderer $cObj The content object renderer, which contains data of the content element
          * @param array $contentObjectConfiguration The configuration of Content Object
@@ -135,7 +135,7 @@ We probably want some kind of preview for our editors in the page module. There 
 #### Fluid template via PageTSconfig
 We can simply specify a fluid template to be rendered as preview in PageTSconfig:
 
-    web_layout.tt_content.preview.fs_slider = EXT:fluid_styled_slider/Resources/Private/Templates/Preview/FluidStyledSlider.html
+    web_layout.tt_content.preview.fsc_slider = EXT:c1_fsc_slider/Resources/Private/Templates/Preview/FluidStyledSlider.html
 
 This template will receive all fields of the tt_content row directly. So `{header}` contains the header, `{bodytext}` contains the
 bodytext and so on.
@@ -144,7 +144,7 @@ bodytext and so on.
 If we want to do more sophisticated stuff like getting child records resolved, we can register to the `tt_content_drawItem` hook
 like this:
 
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['tt_content_drawItem']['fluid_styled_slider']
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['tt_content_drawItem']['c1_fsc_slider']
         = \DanielGoerz\FluidStyledSlider\Hooks\FsSliderPreviewRenderer::class;
 
 Our class has to implement the `\TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHookInterface`.
@@ -152,7 +152,7 @@ Our class has to implement the `\TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHo
     class FsSliderPreviewRenderer implements PageLayoutViewDrawItemHookInterface
     {
         /**
-         * Preprocesses the preview rendering of a content element of type "fs_slider"
+         * Preprocesses the preview rendering of a content element of type "fsc_slider"
          *
          * @param \TYPO3\CMS\Backend\View\PageLayoutView $parentObject Calling parent object
          * @param bool $drawItem Whether to draw the item using the default functionality
@@ -163,7 +163,7 @@ Our class has to implement the `\TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHo
          */
         public function preProcess(PageLayoutView &$parentObject, &$drawItem, &$headerContent, &$itemContent, array &$row)
         {
-            if ($row['CType'] === 'fs_slider') {
+            if ($row['CType'] === 'fsc_slider') {
                 $itemContent .= '<h3>Fluid Styled Slider</h3>';
                 if ($row['assets']) {
                     $itemContent .= $parentObject->thumbCode($row, 'tt_content', 'assets') . '<br />';
@@ -177,4 +177,4 @@ Whatever we write into `$itemContent` will be rendered in the page module inside
 
 ## Miscellaneous
 This extension includes jQuery in `JSFooterLibs`. If you already have jQuery on your site, overwrite this in your TypoScript
-or set the constant `plugin.tx_fluidstyledslider.settings.includejQuery` to 0.
+or set the constant `plugin.tx_c1fscslider.settings.includejQuery` to 0.

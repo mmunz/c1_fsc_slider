@@ -1,36 +1,36 @@
 lib.fluidContent {
 	templateRootPaths {
-		100 = EXT:fluid_styled_slider/Resources/Private/Templates
+		fsc_slider = EXT:c1_fsc_slider/Resources/Private/Templates
 	}
 }
 tt_content {
-	fs_slider < lib.fluidContent
-	fs_slider {
-		templateName = FluidStyledSlider
+	fsc_slider < lib.fluidContent
+	fsc_slider {
+		templateName = C1FscSlider
 		dataProcessing {
 			10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
 			10 {
 				references.fieldName = assets
 			}
-			20 = DanielGoerz\FluidStyledSlider\DataProcessing\FluidStyledSliderProcessor
+			20 = C1\C1FscSlider\DataProcessing\FscSliderProcessor
 		}
 	}
 }
 
-[globalVar = LIT:1 = {$plugin.tx_fluidstyledslider.settings.includejQuery}]
+[globalVar = LIT:1 = {$plugin.tx_c1fscslider.settings.includejQuery}]
 	page.includeJSFooterlibs {
-		jquery = EXT:fluid_styled_slider/Resources/Public/Vendor/jquery/dist/jquery.min.js
+		jquery = EXT:c1_fsc_slider/Resources/Public/Vendor/jquery/dist/jquery.min.js
 		jquery.disableCompression = 1
 	}
 [global]
 
 page.includeJSFooter {
-	slick = EXT:fluid_styled_slider/Resources/Public/Vendor/slick-carousel/slick/slick.min.js
+	slick = EXT:c1_fsc_slider/Resources/Public/Vendor/slick-carousel/slick/slick.min.js
 	slick.disableCompression = 1
-	fluidStyledSlider = EXT:fluid_styled_slider/Resources/Public/JavaScript/FluidStyledSlider.js
+	fluidStyledSlider = EXT:c1_fsc_slider/Resources/Public/JavaScript/C1FscSlider.js
 }
 
 page.includeCSS {
-	slick = EXT:fluid_styled_slider/Resources/Public/Vendor/slick-carousel/slick/slick.css
-	slick-theme = EXT:fluid_styled_slider/Resources/Public/Vendor/slick-carousel/slick/slick-theme.css
+	slick = EXT:c1_fsc_slider/Resources/Public/Vendor/slick-carousel/slick/slick.css
+	slick-theme = EXT:c1_fsc_slider/Resources/Public/Vendor/slick-carousel/slick/slick-theme.css
 }

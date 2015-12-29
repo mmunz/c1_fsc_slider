@@ -1,7 +1,7 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title'              => 'Fluid Styled Slider',
+    'title'              => 'C1 Fluid Styled Slider',
     'description'        => 'A slider Content Element based on fluid_styled_content.',
     'category'           => 'plugin',
     'shy'                => false,
@@ -17,9 +17,9 @@ $EM_CONF[$_EXTKEY] = [
     'modify_tables'      => '',
     'clearcacheonload'   => true,
     'lockType'           => '',
-    'author'             => 'Daniel Goerz',
-    'author_email'       => 'ervaude@gmail.com',
-    'author_company'     => 'Lightwerk GmbH',
+    'author'             => 'Manuel Munz',
+    'author_email'       => 't3dev@comuno.net',
+    'author_company'     => 'comuno.net',
     'CGLcompliance'      => null,
     'CGLcompliance_note' => null,
     'constraints'        => [
@@ -32,7 +32,7 @@ $EM_CONF[$_EXTKEY] = [
     ],
     'autoload' => [
         'psr-4' => [
-            'DanielGoerz\\FluidStyledSlider\\' => 'Classes',
+            'C1\\C1FscSlider\\' => 'Classes',
         ]
     ]
 ];
