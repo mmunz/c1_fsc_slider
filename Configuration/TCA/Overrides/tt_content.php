@@ -26,6 +26,7 @@ call_user_func(function () {
     $GLOBALS['TCA']['tt_content']['types']['fsc_slider'] = [
         'showitem'         => '
                 --palette--;' . $frontendLanguageFilePrefix . 'palette.general;general,
+                image_format,
                 --palette--;' . $languageFilePrefix . 'tt_content.palette.mediaAdjustments;mediaAdjustments,
                 pi_flexform,
             --div--;' . $customLanguageFilePrefix . 'tca.tab.sliderElements,
