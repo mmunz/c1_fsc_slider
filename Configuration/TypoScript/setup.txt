@@ -13,7 +13,6 @@ tt_content {
 				references.fieldName = assets
 			}
 			20 = C1\C1FscSlider\DataProcessing\FscSliderProcessor
-            30 = C1\FluidStyledResponsiveImages\DataProcessing\FluidStyledResponsiveImagesProcessor
 		}
 	}
 }
