@@ -29,6 +29,8 @@ call_user_func(function () {
                 image_format,
                 --palette--;' . $languageFilePrefix . 'tt_content.palette.mediaAdjustments;mediaAdjustments,
                 pi_flexform,
+                --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.appearance,
+                    layout;LLL:EXT:cms/locallang_ttc.xlf:layout_formlabel,
             --div--;' . $customLanguageFilePrefix . 'tca.tab.sliderElements,
                  assets
         ',
