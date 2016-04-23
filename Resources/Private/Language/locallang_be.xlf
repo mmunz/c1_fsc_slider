@@ -37,6 +37,9 @@
 			<trans-unit id="flexform.autoplaySpeed">
 				<source>Autoplay Speed</source>
 			</trans-unit>
+            <trans-unit id="flexform.waitForAnimate">
+				<source>Ignores requests to advance the slide while animating</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
