@@ -25,7 +25,6 @@ $EM_CONF[$_EXTKEY] = [
     'constraints'        => [
         'depends'   => [
             'typo3' => '7.6.0-8.99.99',
-            'c1_fluid_styled_responsive_images' => '',
         ],
         'conflicts' => [],
         'suggests'  => []

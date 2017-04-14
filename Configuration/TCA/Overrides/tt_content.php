@@ -3,6 +3,18 @@ defined('TYPO3_MODE') or die();
 
 call_user_func(function () {
 
+    $focusAreaDefault = [
+        'x' => 1 / 3,
+        'y' => 1 / 3,
+        'width' => 1 / 3,
+        'height' => 1 / 3,
+    ];
+
+    $ratioNaN = [
+        'title' => 'LLL:EXT:lang/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.free',
+        'value' => 0.0
+    ];
+
     $typo3_major_version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::getNumericTypo3Version();
 
     $languageFilePrefix = 'LLL:EXT:fluid_styled_content/Resources/Private/Language/Database.xlf:';
@@ -67,23 +79,46 @@ call_user_func(function () {
                 --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,
                 --div--;' . $customLanguageFilePrefix . 'tca.tab.sliderElements,
                  assets
-        ',
-            'columnsOverrides' => [
-                'media' => [
-                    'label' => $languageFilePrefix . 'tt_content.media_references',
-                    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('media', [
-                        'appearance' => [
-                            'createNewRelationLinkTitle' => $languageFilePrefix . 'tt_content.media_references.addFileReference'
-                        ],
-                        // custom configuration for displaying fields in the overlay/reference table
-                        // behaves the same as the image field.
-                        'foreign_types' => $GLOBALS['TCA']['tt_content']['columns']['image']['config']['foreign_types']
-                    ], $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'])
-                ]
-            ]
+            ',
         ];
     }
 });
+
+$GLOBALS['TCA']['tt_content']['types']['fsc_slider']['columnsOverrides']['assets']['config']['overrideChildTca']['columns']['crop']['config'] = [
+    'cropVariants' => [
+        'default' => [
+            'title' => 'Desktop',
+            'allowedAspectRatios' => [
+                '3:1' => [
+                    'title' => '3:1',
+                    'value' => 3 / 1
+                ],
+                '2:1' => [
+                    'title' => '2:1',
+                    'value' => 2 / 1
+                ],
+            ],
+            'focusArea' => $focusAreaDefault,
+        ],
+        'mobile' => [
+            'title' => 'Mobile',
+            'allowedAspectRatios' => [
+                '2:1' => [
+                    'title' => '2:1',
+                    'value' => 2 / 1
+                ],
+                '3:1' => [
+                    'title' => '3:1',
+                    'value' => 3 / 1
+                ],
+                'NaN' => $ratioNaN,
+            ],
+            'focusArea' => $focusAreaDefault,
+        ],
+    ],
+];
+
+
 
 
 
