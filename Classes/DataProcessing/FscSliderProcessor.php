@@ -59,8 +59,13 @@ class FscSliderProcessor implements DataProcessorInterface
         }
 
         // This will be available in fluid with {slider.options}
-        $processedData['slider']['options'] = $this->getOptionsFromFlexFormData($processedData['data']);
-        $processedData['slider']['options_json'] = json_encode($this->getOptionsFromFlexFormData($processedData['data']));
+        $sliderOptions = $this->getOptionsFromFlexFormData($processedData['data'], 'options');
+        $processedData['slider']['options'] = $sliderOptions;
+        $processedData['slider']['options_json'] = json_encode($sliderOptions);
+
+        $flexformSettings = $this->getOptionsFromFlexFormData($processedData['data'], 'settings');
+        $processedData['flexformSettings'] = $flexformSettings;
+
         // This will be available in fluid with {slider.width}
         $processedData['slider']['width'] = $sliderWidth + 80;
         return $processedData;
@@ -86,14 +91,16 @@ class FscSliderProcessor implements DataProcessorInterface
      * @param array $row
      * @return array
      */
-    protected function getOptionsFromFlexFormData(array $row)
+    protected function getOptionsFromFlexFormData(array $row, $prefix)
     {
         $options = [];
         $flexFormAsArray = GeneralUtility::xml2array($row['pi_flexform']);
         if (!empty($flexFormAsArray['data']['sDEF']['lDEF']) && is_array($flexFormAsArray['data']['sDEF']['lDEF'])) {
             foreach ($flexFormAsArray['data']['sDEF']['lDEF'] as $optionKey => $optionValue) {
                 $optionParts = explode('.', $optionKey);
-                $options[array_pop($optionParts)] = $optionValue['vDEF'] === '1' ? true : $optionValue['vDEF'];
+                if ($optionParts[0] === $prefix) {
+                    $options[array_pop($optionParts)] = $optionValue['vDEF'] === '1' ? true : $optionValue['vDEF'];
+                }
             }
         }
         return $options;

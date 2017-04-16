@@ -16,6 +16,9 @@
 			<trans-unit id="tca.tab.sliderElements">
 				<source>Slider Elements</source>
 			</trans-unit>
+            <trans-unit id="header_tag">
+                <source>Header Tag</source>
+            </trans-unit>
 			<trans-unit id="flexform.autoplay">
 				<source>Autoplay</source>
 			</trans-unit>

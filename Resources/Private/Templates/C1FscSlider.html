@@ -14,8 +14,11 @@
 					title="{file.properties.title}"
 				/>
 				<f:if condition="{file.properties.description}">
-					<figcaption>{file.properties.description}</figcaption>
+					<{f:if(condition: flexformSettings.header_tag, then: flexformSettings.header_tag, else: 'span')} class="h1">
+						{file.properties.title}
+					</{f:if(condition: flexformSettings.header_tag, then: flexformSettings.header_tag, else: 'span')}>
 				</f:if>
+				{file.properties.description}
 			</figure>
 		</f:for>
 	</div>
