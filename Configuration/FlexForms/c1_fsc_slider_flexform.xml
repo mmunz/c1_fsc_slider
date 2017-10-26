@@ -4,7 +4,7 @@
         <langChildren>1</langChildren>
     </meta>
     <sheets>
-        <sDEF>
+        <general>
             <ROOT>
                 <TCEforms>
                     <sheetTitle>General</sheetTitle>
@@ -46,9 +46,8 @@
                     </settings.header_tag>
                 </el>
             </ROOT>
-        </sDEF>
-        <slider>
-
+        </general>
+        <sDEF>
             <ROOT>
                 <TCEforms>
                     <sheetTitle>Slider Options
@@ -158,6 +157,6 @@
                     </options.autoplaySpeed>
                 </el>
             </ROOT>
-        </slider>
+        </sDEF>
     </sheets>
 </T3DataStructure>

@@ -17,6 +17,7 @@ namespace C1\C1FscSlider\DataProcessing;
 
 use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 use TYPO3\CMS\Frontend\ContentObject\Exception\ContentRenderingException;
@@ -59,11 +60,11 @@ class FscSliderProcessor implements DataProcessorInterface
         }
 
         // This will be available in fluid with {slider.options}
-        $sliderOptions = $this->getOptionsFromFlexFormData($processedData['data'], 'options');
+        $sliderOptions = $this->getOptionsFromFlexFormData($processedData['data'], 'sDEF', 'options');
         $processedData['slider']['options'] = $sliderOptions;
         $processedData['slider']['options_json'] = json_encode($sliderOptions);
 
-        $flexformSettings = $this->getOptionsFromFlexFormData($processedData['data'], 'settings');
+        $flexformSettings = $this->getOptionsFromFlexFormData($processedData['data'], 'general', 'settings');
         $processedData['flexformSettings'] = $flexformSettings;
 
         // This will be available in fluid with {slider.width}
@@ -91,15 +92,22 @@ class FscSliderProcessor implements DataProcessorInterface
      * @param array $row
      * @return array
      */
-    protected function getOptionsFromFlexFormData(array $row, $prefix)
+    protected function getOptionsFromFlexFormData(array $row, $sheet, $prefix)
     {
         $options = [];
         $flexFormAsArray = GeneralUtility::xml2array($row['pi_flexform']);
-        if (!empty($flexFormAsArray['data']['sDEF']['lDEF']) && is_array($flexFormAsArray['data']['sDEF']['lDEF'])) {
-            foreach ($flexFormAsArray['data']['sDEF']['lDEF'] as $optionKey => $optionValue) {
+        DebuggerUtility::var_dump($flexFormAsArray);
+        if (!empty($flexFormAsArray['data'][$sheet]['lDEF']) && is_array($flexFormAsArray['data'][$sheet]['lDEF'])) {
+            foreach ($flexFormAsArray['data'][$sheet]['lDEF'] as $optionKey => $optionValue) {
                 $optionParts = explode('.', $optionKey);
                 if ($optionParts[0] === $prefix) {
-                    $options[array_pop($optionParts)] = $optionValue['vDEF'] === '1' ? true : $optionValue['vDEF'];
+                    $booleanValues = ['autoplay', 'infinite', 'fade', 'dots', 'arrows', 'waitForAnimate'];
+                    if (in_array($optionParts[1], $booleanValues)) {
+                        $options[array_pop($optionParts)] = $optionValue['vDEF'] === '1' ? true : false;
+                    } else {
+                        $options[array_pop($optionParts)] = $optionValue['vDEF'];
+                    }
+
                 }
             }
         }
