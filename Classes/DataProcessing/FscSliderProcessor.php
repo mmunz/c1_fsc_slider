@@ -17,7 +17,6 @@ namespace C1\C1FscSlider\DataProcessing;
 
 use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 use TYPO3\CMS\Frontend\ContentObject\Exception\ContentRenderingException;
@@ -96,7 +95,6 @@ class FscSliderProcessor implements DataProcessorInterface
     {
         $options = [];
         $flexFormAsArray = GeneralUtility::xml2array($row['pi_flexform']);
-        DebuggerUtility::var_dump($flexFormAsArray);
         if (!empty($flexFormAsArray['data'][$sheet]['lDEF']) && is_array($flexFormAsArray['data'][$sheet]['lDEF'])) {
             foreach ($flexFormAsArray['data'][$sheet]['lDEF'] as $optionKey => $optionValue) {
                 $optionParts = explode('.', $optionKey);
