@@ -1,12 +1,10 @@
-lib.fluidContent {
-	templateRootPaths {
-		C1FscSlider = {$plugin.tx_c1fscslider.view.templateRootPath}
-	}
-}
 tt_content {
-	fsc_slider < lib.fluidContent
+	fsc_slider =< lib.contentElement
 	fsc_slider {
 		templateName = C1FscSlider
+		templateRootPaths {
+			10 = {$plugin.tx_c1fscslider.view.templateRootPath}
+		}
 		dataProcessing {
 			10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
 			10 {
