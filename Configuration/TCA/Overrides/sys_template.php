@@ -10,9 +10,8 @@ defined('TYPO3_MODE') or die();
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php']['tt_content_drawItem']['c1_fsc_slider']
     = \C1\C1FscSlider\Hooks\FscSliderPreviewRenderer::class;
 
-//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump(get_declared_classes());
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Fluid Styled Slider');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('c1_fsc_slider', 'Configuration/TypoScript', 'Fluid Styled Slider');
 
 // Add a flexform to the fsc_slider CType
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
