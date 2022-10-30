@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 call_user_func(function () {
 
@@ -11,7 +11,7 @@ call_user_func(function () {
     ];
 
     $ratioNaN = [
-        'title' => 'LLL:EXT:lang/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.free',
+        'title' => 'LLL:EXT:core/Resources/Private/Language/locallang_wizards.xlf:imwizard.ratio.free',
         'value' => 0.0
     ];
 
@@ -38,88 +38,54 @@ call_user_func(function () {
 
     // Define what fields to display
 
-    if (intval($typo3_major_version[0]) < 8) {
-
-        $GLOBALS['TCA']['tt_content']['types']['fsc_slider'] = [
-            'showitem' => '
-                --palette--;' . $frontendLanguageFilePrefix . 'palette.general;general,
-                image_format,
-                --palette--;' . $languageFilePrefix . 'tt_content.palette.mediaAdjustments;mediaAdjustments,
-                pi_flexform,
-                --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.appearance,
-                    layout;LLL:EXT:cms/locallang_ttc.xlf:layout_formlabel,
+    $GLOBALS['TCA']['tt_content']['types']['fsc_slider'] = [
+        'previewRenderer' => \C1\C1FscSlider\Preview\SliderPreviewRenderer::class,
+        'showitem' => '
+            --palette--;' . $frontendLanguageFilePrefix . 'palette.general;general,
+            image_format,
+            --palette--;' . $languageFilePrefix . 'tt_content.palette.mediaAdjustments;mediaAdjustments,
+            pi_flexform,
+            bodytext;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xml:bodytext_formlabel;bodytext,
+            --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,
+            --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,
             --div--;' . $customLanguageFilePrefix . 'tca.tab.sliderElements,
-                 assets
+             assets
         ',
-            'columnsOverrides' => [
-                'media' => [
-                    'label' => $languageFilePrefix . 'tt_content.media_references',
-                    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('media', [
-                        'appearance' => [
-                            'createNewRelationLinkTitle' => $languageFilePrefix . 'tt_content.media_references.addFileReference'
-                        ],
-                        // custom configuration for displaying fields in the overlay/reference table
-                        // behaves the same as the image field.
-                        'foreign_types' => $GLOBALS['TCA']['tt_content']['columns']['image']['config']['foreign_types']
-                    ], $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext'])
-                ]
-            ]
-        ];
+    ];
 
-    } else {
-        $GLOBALS['TCA']['tt_content']['types']['fsc_slider'] = [
-            'showitem' => '
-                --palette--;' . $frontendLanguageFilePrefix . 'palette.general;general,
-                image_format,
-                --palette--;' . $languageFilePrefix . 'tt_content.palette.mediaAdjustments;mediaAdjustments,
-                pi_flexform,
-                bodytext;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xml:bodytext_formlabel;bodytext,
-                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
-                --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,
-                --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,
-                --div--;' . $customLanguageFilePrefix . 'tca.tab.sliderElements,
-                 assets
-            ',
-        ];
-    }
+    $GLOBALS['TCA']['tt_content']['types']['fsc_slider']['columnsOverrides']['assets']['config']['overrideChildTca']['columns']['crop']['config'] = [
+        'cropVariants' => [
+            'default' => [
+                'title' => 'Desktop',
+                'allowedAspectRatios' => [
+                    '3:1' => [
+                        'title' => '3:1',
+                        'value' => 3 / 1
+                    ],
+                    '2:1' => [
+                        'title' => '2:1',
+                        'value' => 2 / 1
+                    ],
+                ],
+                'focusArea' => $focusAreaDefault,
+            ],
+            'mobile' => [
+                'title' => 'Mobile',
+                'allowedAspectRatios' => [
+                    '2:1' => [
+                        'title' => '2:1',
+                        'value' => 2 / 1
+                    ],
+                    '3:1' => [
+                        'title' => '3:1',
+                        'value' => 3 / 1
+                    ],
+                    'NaN' => $ratioNaN,
+                ],
+                'focusArea' => $focusAreaDefault,
+            ],
+        ],
+    ];
+
 });
-
-$GLOBALS['TCA']['tt_content']['types']['fsc_slider']['columnsOverrides']['assets']['config']['overrideChildTca']['columns']['crop']['config'] = [
-    'cropVariants' => [
-        'default' => [
-            'title' => 'Desktop',
-            'allowedAspectRatios' => [
-                '3:1' => [
-                    'title' => '3:1',
-                    'value' => 3 / 1
-                ],
-                '2:1' => [
-                    'title' => '2:1',
-                    'value' => 2 / 1
-                ],
-            ],
-            'focusArea' => $focusAreaDefault,
-        ],
-        'mobile' => [
-            'title' => 'Mobile',
-            'allowedAspectRatios' => [
-                '2:1' => [
-                    'title' => '2:1',
-                    'value' => 2 / 1
-                ],
-                '3:1' => [
-                    'title' => '3:1',
-                    'value' => 3 / 1
-                ],
-                'NaN' => $ratioNaN,
-            ],
-            'focusArea' => $focusAreaDefault,
-        ],
-    ],
-];
-
-
-
-
-
-

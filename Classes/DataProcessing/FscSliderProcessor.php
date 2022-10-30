@@ -14,7 +14,7 @@ namespace C1\C1FscSlider\DataProcessing;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
+use TYPO3\CMS\Core\Resource\FileReference;
 use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -51,7 +51,7 @@ class FscSliderProcessor implements DataProcessorInterface
             $sliderWidth = (int)$processedData['data']['imagewidth'];
         } else {
             $files = $processedData['files'];
-            /** @var \TYPO3\CMS\Core\Resource\FileReference $file */
+            /** @var FileReference $file */
             foreach ($files as $file) {
                 $fileWidth = $this->getCroppedWidth($file);
                 $sliderWidth = $fileWidth > $sliderWidth ? $fileWidth : $sliderWidth;

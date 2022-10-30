@@ -1,29 +1,27 @@
 {
-  "name": "c1/c1-fsc-slider",
-  "type": "typo3-cms-extension",
-  "version": "1.4.0",
-  "description": "A slider Content Element for TYPO3 CMS based on slick slider, fluid_styled_content and c1_fluid_styled_responsive_images.",
-  "keywords": [
-    "TYPO3",
-    "extension",
-    "fluid",
-    "slick",
-    "slider"
-  ],
-  "authors": [
-    {
-      "name": "Manuel Munz",
-      "email": "t3dev@comuno.net",
-      "role": "Developer"
+    "name": "c1/c1-fsc-slider",
+    "type": "typo3-cms-extension",
+    "description": "A slider Content Element for TYPO3 CMS based on slick slider, fluid_styled_content and c1_fluid_styled_responsive_images.",
+    "keywords": ["TYPO3", "extension", "fluid", "slick", "slider"],
+    "authors": [
+        {
+            "name": "Manuel Munz",
+            "email": "t3dev@comuno.net",
+            "role": "Developer"
+        }
+    ],
+    "license": "GPL-2.0+",
+    "require": {
+        "typo3/cms-core": ">11.5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "C1\\C1FscSlider\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "c1_fsc_slider"
+        }
     }
-  ],
-  "license": "GPL-2.0+",
-  "require": {
-    "typo3/cms-core": ">=7.6 <10.4.99"
-  },
-  "autoload": {
-    "psr-4": {
-      "C1\\C1FscSlider\\": "Classes/"
-    }
-  }
 }
