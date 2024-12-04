@@ -19,10 +19,10 @@ namespace C1\C1FscSlider\Preview;
 use TYPO3\CMS\Backend\Preview\StandardContentPreviewRenderer;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Backend\View\BackendLayout\Grid\GridColumnItem;
+use TYPO3\CMS\Core\Resource\ProcessedFile;
 
 /**
- * Contains a preview rendering for the page module of CType="textmedia"
- * @internal this is a concrete TYPO3 hook implementation and solely used for EXT:frontend and not part of TYPO3's Core API.
+ * Contains a preview rendering for the page module of CType="c1_fsc_slider"
  */
 class SliderPreviewRenderer extends StandardContentPreviewRenderer
 {
@@ -30,12 +30,28 @@ class SliderPreviewRenderer extends StandardContentPreviewRenderer
     {
         $content = '';
         $row = $item->getRecord();
+        $imageTags = [];
 
         if ($row['assets']) {
-            $content .= $this->linkEditContent(
-                BackendUtility::thumbCode($row, 'tt_content', 'assets', '', '', null, 0, '', '128', false),
-                $row
-            );
+            $fileReferences = BackendUtility::resolveFileReferences('tt_content', 'assets', $row);
+            foreach ($fileReferences as $fileReference) {
+                $processedFile = $fileReference->getOriginalFile()->process(
+                    ProcessedFile::CONTEXT_IMAGEPREVIEW,
+                    [
+                        'width' => '96',
+                    ]
+                );
+                $imageTags[] = sprintf(
+                    '<img alt="%s" src="%s"/>',
+                    $processedFile->getProperty('alternative'),
+                    $processedFile->getPublicUrl()
+                );
+            }
+            if ($imageTags) {
+                $content .= implode('', $imageTags);
+            }
+        } else {
+            $content .= 'No images selected!';
         }
         return $content;
     }
