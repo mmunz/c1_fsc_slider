@@ -84,6 +84,10 @@ class FscSliderProcessor implements DataProcessorInterface
             return $fileObject->getProperty('width');
         }
         $croppingConfiguration = json_decode($fileObject->getProperty('crop'), true);
+        
+        if (!is_array($croppingConfiguration) || empty($croppingConfiguration['width'])) {
+            return $fileObject->getProperty('width');
+        }
         return (int)$croppingConfiguration['width'];
     }
 
