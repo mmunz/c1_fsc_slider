@@ -100,18 +100,16 @@
                         <exclude>1</exclude>
                         <label>LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.speed</label>
                         <config>
-                            <type>input</type>
+                            <type>number</type>
                             <default>2000</default>
-                            <eval>int</eval>
                         </config>
                     </options.speed>
                     <options.autoplaySpeed>
                         <exclude>1</exclude>
                         <label>LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.autoplaySpeed</label>
                         <config>
-                            <type>input</type>
+                            <type>number</type>
                             <default>4000</default>
-                            <eval>int</eval>
                         </config>
                     </options.autoplaySpeed>
                 </el>
