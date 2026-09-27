@@ -29,7 +29,9 @@ class SliderPreviewRenderer extends StandardContentPreviewRenderer
     public function renderPageModulePreviewContent(GridColumnItem $item): string
     {
         $content = '';
-        $row = $item->getRecord();
+        // TYPO3 v14 returns a Record object from getRecord(), the raw row via getRow()
+        // @todo: Use getRow() only when dropping support for v13
+        $row = method_exists($item, 'getRow') ? $item->getRow() : $item->getRecord();
         $imageTags = [];
 
         if ($row['assets']) {

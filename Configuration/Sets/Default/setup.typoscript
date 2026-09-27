@@ -18,12 +18,10 @@ tt_content {
 ["{$plugin.tx_c1fscslider.settings.includejQuery}" == "1"]
 page.includeJSFooterlibs {
     jquery = EXT:c1_fsc_slider/Resources/Public/Vendor/jquery/dist/jquery.min.js
-    jquery.disableCompression = 1
 }
 [global]
 page.includeJSFooter {
     slick = EXT:c1_fsc_slider/Resources/Public/Vendor/slick-carousel/slick/slick.min.js
-    slick.disableCompression = 1
     fluidStyledSlider = EXT:c1_fsc_slider/Resources/Public/JavaScript/C1FscSlider.js
 }
 
