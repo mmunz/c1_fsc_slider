@@ -6,155 +6,113 @@
     <sheets>
         <general>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>General</sheetTitle>
-                </TCEforms>
+                <sheetTitle>General</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.header_tag>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>
-                                LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:header_tag
-                            </label>
-                            <config>
-                                <type>select</type>
-<renderType>selectSingle</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">span</numIndex>
-                                        <numIndex index="1">span</numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">h1</numIndex>
-                                        <numIndex index="1">h1</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2" type="array">
-                                        <numIndex index="0">h2</numIndex>
-                                        <numIndex index="1">h2</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3" type="array">
-                                        <numIndex index="0">h3</numIndex>
-                                        <numIndex index="1">h3</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4" type="array">
-                                        <numIndex index="0">h4</numIndex>
-                                        <numIndex index="1">h4</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:header_tag</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label>span</label>
+                                    <value>span</value>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <label>h1</label>
+                                    <value>h1</value>
+                                </numIndex>
+                                <numIndex index="2" type="array">
+                                    <label>h2</label>
+                                    <value>h2</value>
+                                </numIndex>
+                                <numIndex index="3" type="array">
+                                    <label>h3</label>
+                                    <value>h3</value>
+                                </numIndex>
+                                <numIndex index="4" type="array">
+                                    <label>h4</label>
+                                    <value>h4</value>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.header_tag>
                 </el>
             </ROOT>
         </general>
         <sDEF>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>Slider Options
-                    </sheetTitle>
-                </TCEforms>
+                <sheetTitle>Slider Options</sheetTitle>
                 <type>array</type>
                 <el>
-
                     <!-- Checkbox -->
                     <options.autoplay>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>
-                                LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.autoplay
-                            </label>
-                            <config>
-                                <type>check</type>
-                                <default>1</default>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.autoplay</label>
+                        <config>
+                            <type>check</type>
+                            <default>1</default>
+                        </config>
                     </options.autoplay>
                     <options.infinite>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>
-                                LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.infinite
-                            </label>
-                            <config>
-                                <type>check</type>
-                                <default>1</default>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.infinite</label>
+                        <config>
+                            <type>check</type>
+                            <default>1</default>
+                        </config>
                     </options.infinite>
                     <options.fade>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>
-                                LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.fade
-                            </label>
-                            <config>
-                                <type>check</type>
-                                <default>1</default>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.fade</label>
+                        <config>
+                            <type>check</type>
+                            <default>1</default>
+                        </config>
                     </options.fade>
                     <options.waitForAnimate>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>
-                                LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.waitForAnimate
-                            </label>
-                            <config>
-                                <type>check</type>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.waitForAnimate</label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
                     </options.waitForAnimate>
                     <options.dots>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>
-                                LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.dots
-                            </label>
-                            <config>
-                                <type>check</type>
-                                <default>1</default>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.dots</label>
+                        <config>
+                            <type>check</type>
+                            <default>1</default>
+                        </config>
                     </options.dots>
                     <options.arrows>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>
-                                LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.arrows
-                            </label>
-                            <config>
-                                <type>check</type>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.arrows</label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
                     </options.arrows>
                     <options.speed>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>
-                                LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.speed
-                            </label>
-                            <config>
-                                <type>input</type>
-                                <default>2000</default>
-                                <eval>int</eval>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.speed</label>
+                        <config>
+                            <type>input</type>
+                            <default>2000</default>
+                            <eval>int</eval>
+                        </config>
                     </options.speed>
                     <options.autoplaySpeed>
-                        <TCEforms>
-                            <exclude>1</exclude>
-                            <label>
-                                LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.autoplaySpeed
-                            </label>
-                            <config>
-                                <type>input</type>
-                                <default>4000</default>
-                                <eval>int</eval>
-                            </config>
-                        </TCEforms>
+                        <exclude>1</exclude>
+                        <label>LLL:EXT:c1_fsc_slider/Resources/Private/Language/locallang_be.xlf:flexform.autoplaySpeed</label>
+                        <config>
+                            <type>input</type>
+                            <default>4000</default>
+                            <eval>int</eval>
+                        </config>
                     </options.autoplaySpeed>
                 </el>
             </ROOT>
